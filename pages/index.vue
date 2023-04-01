@@ -56,7 +56,6 @@ async function submitForm () {
   await ruleFormRef.value.validate(async (valid, fields) => {
     if (valid) {
       isLogin.value = true
-      
       useRouter().push({ name: $routeNames.game })
     } else {
       console.log('error submit!', fields)

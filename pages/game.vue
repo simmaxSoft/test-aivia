@@ -33,9 +33,7 @@ definePageMeta({
   middleware:'game-middleware'
 })
 const changeColor = (event) => {
-  console.log(event)
   const backgroundColor = event.target.style.backgroundColor
-  console.log(backgroundColor)
   event.target.style.backgroundColor = backgroundColor === 'rgb(255, 255, 255)' ? 'rgb(000, 000, 255)' : 'rgb(255, 255, 255)'
 }
 const sizes = reactive({ x: null, y: null })
