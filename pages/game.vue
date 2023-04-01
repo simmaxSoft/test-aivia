@@ -12,7 +12,7 @@
     </div>
    
 
-    <div v-if="sizes.x && sizes.y" class="z-0 bg-black max-w-max p-4">
+    <div v-if="sizes.x !== '0' && sizes.y !== '0'" class="z-0 bg-black max-w-max p-4">
       <p v-for="y in parseInt(sizes.y)" :key="y" class="flex z-10">
         <p 
         v-for="x in parseInt(sizes.x)" 
