@@ -33,15 +33,15 @@ definePageMeta({
   pageLabel: 'Login',
   navOrder: 1
 })
-const options = Array.from({ length: 10 }).map((_, idx) => ({
-  value: `${idx + 1}`,
-  label: `${idx + 1}`
-}))
+
+const {isLogin} = useGeneralStore()
+
 const ruleFormRef = useElFormRef()
 const ruleForm = useElFormModel({
   email: '',
   password: '',
 })
+
 const rules = useElFormRules({
   email: [useRequiredRule(),{
           type: 'email',
@@ -51,15 +51,19 @@ const rules = useElFormRules({
   password:[useMinLenRule(6), useRequiredRule()]
   
 })
+
 async function submitForm () {
-  await ruleFormRef.value.validate((valid, fields) => {
+  await ruleFormRef.value.validate(async (valid, fields) => {
     if (valid) {
-      useRouter().push({name:$routeNames.game})
+      isLogin.value = true
+      
+      useRouter().push({ name: $routeNames.game })
     } else {
       console.log('error submit!', fields)
     }
   })
 }
+
 function resetForm () {
   ruleFormRef.value.resetFields()
 }

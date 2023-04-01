@@ -1,4 +1,4 @@
 export default function () {
-  const state = ref('state')
-  return { state }
+  const isLogin = useState('isLogin',()=>false)
+  return { isLogin }
 }

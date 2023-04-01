@@ -10,33 +10,33 @@
         <el-input v-model="sizes.y" type="number" :min="0"/>
       </el-form-item>
     </div>
-    <div class="mb-4">
-      <div class="mb-2">
-          <span class="mr-2">Basic</span>
-          <el-color-picker v-model="basicColor" />
-      </div>
-     
-    </div>
+   
 
     <div v-if="sizes.x && sizes.y" class="z-0 bg-black max-w-max p-4">
       <p v-for="y in parseInt(sizes.y)" :key="y" class="flex z-10">
         <p 
         v-for="x in parseInt(sizes.x)" 
+        :onmouseenter="changeColor"
         :key="x" 
-        class="z-20 w-9 h-9 border-2 border-red-300 hover:cursor-pointer hover:!bg-blue-900"
-        :style="{'background-color': basicColor}"
+        :style="{'background-color': '#FFF'}"
+        class="z-20 w-9 h-9 border-2 border-red-300 hover:cursor-pointer hover"
         />
       </p>
     </div>
   </el-card>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 definePageMeta({
   pageLabel: 'Game',
-  navOrder: 2
+  navOrder: 2,
+  middleware:'game-middleware'
 })
-
-const basicColor = ref('rgb(255,255,255)')
+const changeColor = (event) => {
+  console.log(event)
+  const backgroundColor = event.target.style.backgroundColor
+  console.log(backgroundColor)
+  event.target.style.backgroundColor = backgroundColor === 'rgb(255, 255, 255)' ? 'rgb(000, 000, 255)' : 'rgb(255, 255, 255)'
+}
 const sizes = reactive({ x: null, y: null })
 </script>
