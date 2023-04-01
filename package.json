@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-p type-check nuxt build",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "run-p type-check nuxt generate",
     "preview": "nuxt preview",
