@@ -11,11 +11,10 @@
       </el-form-item>
     </div>
    
-
-    <div v-if="sizes.x !== '0' && sizes.y !== '0'" class="z-0 bg-black max-w-max p-4">
+    <div v-if="sizes.x && sizes.y && sizes.y !== '0' && sizes.x !== '0'" class="z-0 bg-black max-w-max p-4">
       <p v-for="y in parseInt(sizes.y)" :key="y" class="flex z-10">
         <p 
-        v-for="x in parseInt(sizes.x)" 
+        v-for="x in parseInt(sizes.x)"
         :onmouseenter="changeColor"
         :key="x" 
         :style="{'background-color': '#FFF'}"
@@ -32,9 +31,11 @@ definePageMeta({
   navOrder: 2,
   middleware:'game-middleware'
 })
+
+const sizes = reactive({ x: '0', y: '0' })
+
 const changeColor = (event) => {
   const backgroundColor = event.target.style.backgroundColor
   event.target.style.backgroundColor = backgroundColor === 'rgb(255, 255, 255)' ? 'rgb(000, 000, 255)' : 'rgb(255, 255, 255)'
 }
-const sizes = reactive({ x: null, y: null })
 </script>
