@@ -797,6 +797,18 @@
   resolved "https://registry.yarnpkg.com/@sxzz/popperjs-es/-/popperjs-es-2.11.7.tgz#a7f69e3665d3da9b115f9e71671dae1b97e13671"
   integrity sha512-Ccy0NlLkzr0Ex2FKvh2X+OyERHXJ88XJ1MXtsI9y9fGexlaXaVTPzBCRBwIxFkORuOb+uBqeu+RqnpgYTEZRUQ==
 
+"@radial-color-picker/rotator@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@radial-color-picker/rotator/-/rotator-3.0.2.tgz#44289355f9dcf28f58af1a6964d28ef55b3ff518"
+  integrity sha512-JiSVkN/hSMKqIcQz8KaeLvbzA0UrZkKQL2Q8s4MUxehjLcciTSctG75V8trHk0tPkTfglZjLlmg+S5+xO3GBLQ==
+
+"@radial-color-picker/vue-color-picker@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@radial-color-picker/vue-color-picker/-/vue-color-picker-5.0.1.tgz#13194552df9d6df31aedc64ec9be1f16562f2b8c"
+  integrity sha512-ExTbaDdac00RqxCPcfWKj2UrtBbzwph0HRVQKKgj94aCkWz8vedme+65v97cZUCdxOvxh0BANGgi6RD6H966Zw==
+  dependencies:
+    "@radial-color-picker/rotator" "3.0.2"
+
 "@rollup/plugin-alias@^4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-alias/-/plugin-alias-4.0.3.tgz#571f6fb26387df91d0363905a7fd835757727ae2"
@@ -1910,6 +1922,11 @@ color-convert@^2.0.1:
   integrity sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==
   dependencies:
     color-name "~1.1.4"
+
+color-fns@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/color-fns/-/color-fns-0.0.10.tgz#b03f34ab3bb3902ac24e7c86ff32d845fbbaf7bf"
+  integrity sha512-QFKowTE9CXCLp09Gz5cQo8VPUP55hf73iHEI52JC3NyKfMpQG2VoLWmTxYeTKH6ngkEnoMrCdEX//M6J4PVQBA==
 
 color-name@1.1.3:
   version "1.1.3"
@@ -6267,6 +6284,13 @@ vary@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
+
+verte@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/verte/-/verte-0.0.12.tgz#f91b3f82cf2d6ea81ac2ccad66bb9aefe7997503"
+  integrity sha512-QEWpKkjAT8SLkNJzeiZxN7tJuUiTTFO51tg9dGIrkDlQhzbaM+bTT0wtDM2c/F+Ur9luE64qhsM4xI0Af3Ut1g==
+  dependencies:
+    color-fns "^0.0.10"
 
 vite-node@^0.29.7:
   version "0.29.7"
