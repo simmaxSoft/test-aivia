@@ -42,8 +42,10 @@
   </el-dialog>
   </el-card>
   <el-card>
-    <div v-for="ingredient in ingredients" :key="ingredient.id">
-      <p>{{ ingredient.name }} {{ count[ingredient.id] || 0 }}</p>
+    <div v-for="ingredient in ingredients.filter(el => count[el.id]).sort((a,b) => String(a.name).localeCompare(b.name))" :key="ingredient.id"
+      class="flex justify-between border-2 my-2">
+      <p>{{ ingredient.name }}</p>
+      <p>{{ count[ingredient.id] || 0 }}</p>
       
     </div>
   </el-card>
