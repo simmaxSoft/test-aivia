@@ -1,69 +1,51 @@
 
 
 <template>
-  <el-card class="w-full h-full flex justify-center items-center">
-    <el-form
-      ref="ruleFormRef"
-      class="max-w-[800px]"
-      :model="ruleForm"
-      :rules="rules"
-      status-icon
-    >
-      <el-form-item label="Email" prop="email" >
-        <el-input v-model="ruleForm.email" type="email"/>
-      </el-form-item>
-
-      <el-form-item label="Password" prop="password">
-        <el-input type="password" v-model="ruleForm.password"/>
-      </el-form-item>
-
-      <el-form-item>
-        <el-button type="primary" @click="submitForm">
-          Login
-        </el-button>
-        <el-button @click="resetForm">Reset</el-button>
-      </el-form-item>
-    </el-form>
+  <el-card>
+    <div class="flex gap-4 mb-4">
+      <el-input v-model="newIngredient" class="max-w-md"/>
+      <el-button type="primary" @click.prevent="addIngredient">Додати</el-button>
+    </div>
+    <div>
+    <p v-for="ingredient in ingredients" :key="ingredient.id" class="text-lg flex items-center gap-2">
+      {{ ingredient.name }}
+    </p>
+    </div>
   </el-card>
 </template>
 
 <script lang="ts" setup>
-const {$routeNames} = useNuxtApp()
+import { ElNotification } from 'element-plus';
+
+
 definePageMeta({
-  pageLabel: 'Login',
+  pageLabel: 'Інградієнти',
   navOrder: 1
 })
 
-const {isLogin} = useGeneralStore()
-
-const ruleFormRef = useElFormRef()
-const ruleForm = useElFormModel({
-  email: '',
-  password: '',
-})
-
-const rules = useElFormRules({
-  email: [useRequiredRule(),{
-          type: 'email',
-          message: 'Incorrect email',
-          trigger: ['blur', 'change'],
-        }],
-  password:[useMinLenRule(6), useRequiredRule()]
-  
-})
-
-async function submitForm () {
-  await ruleFormRef.value.validate(async (valid, fields) => {
-    if (valid) {
-      isLogin.value = true
-      useRouter().push({ name: $routeNames.game })
-    } else {
-      console.log('error submit!', fields)
+const client = useSupabaseClient()
+const newIngredient = ref('')
+const ingredients = ref([])
+async function addIngredient(){
+  try{
+    const {error} = await client.from('ingredients').insert({name:newIngredient.value})
+    console.log(error)
+    if(error){
+      ElNotification({message: error.message, type: 'error'})  
     }
-  })
+  }
+  catch (e){
+    ElNotification({message:`${e}`,type:'error',duration:1000})
+  }
+  finally{
+    init()
+  }
+}
+onMounted(init)
+
+async function init() {
+  const {data} = await client.from('ingredients').select('*')
+  ingredients.value = data
 }
 
-function resetForm () {
-  ruleFormRef.value.resetFields()
-}
 </script>

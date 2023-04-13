@@ -15,12 +15,17 @@
 @use "element-plus/theme-chalk/src/var";
 @use "element-plus/theme-chalk/src/base";
 @use "element-plus/theme-chalk/src/button";
+@use "element-plus/theme-chalk/src/dialog";
+@use "element-plus/theme-chalk/src/collapse";
+@use "element-plus/theme-chalk/src/option";
+
+
+
 
 @use "element-plus/theme-chalk/src/form";
 @use "element-plus/theme-chalk/src/form-item";
 @use "element-plus/theme-chalk/src/input";
-@use "element-plus/theme-chalk/src/date-picker";
-
+@use "element-plus/theme-chalk/src/notification";
 @use "element-plus/theme-chalk/src/col";
 @use "element-plus/theme-chalk/src/popper";
 @use "element-plus/theme-chalk/src/card";
